@@ -1,0 +1,1930 @@
+Attribute VB_Name = "JdCCO"
+Option Explicit
+
+Sub GrapSales(sourceSheet As Worksheet, targetSheet As Worksheet)
+    Dim startRow As Integer
+    Dim upperValue
+    
+    '****************************************************************************************************
+    '* SALES TARGET
+    '****************************************************************************************************
+    startRow = 1
+    targetSheet.Cells(startRow, 1).Value = "REGION SALES"
+    With targetSheet.Range(targetSheet.Cells(startRow, 1), targetSheet.Cells(startRow, 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, 2).Value = "SALES"
+    targetSheet.Cells(startRow + 1, 3).Value = "CCO"
+    
+    targetSheet.Cells(startRow + 2, 1).Value = "NORTH"
+    With targetSheet.Cells(startRow + 2, 2)
+        .Value = sourceSheet.Cells(13, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, 3)
+        .Value = sourceSheet.Cells(26, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, 1).Value = "SOUTH"
+    With targetSheet.Cells(startRow + 3, 2)
+        .Value = sourceSheet.Cells(20, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, 3)
+        .Value = sourceSheet.Cells(26, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, 1).Value = "SW/C"
+    With targetSheet.Cells(startRow + 4, 2)
+        .Value = sourceSheet.Cells(25, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, 3)
+        .Value = sourceSheet.Cells(26, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    '****************************************************************************************************
+    '* NORTH SALES
+    '****************************************************************************************************
+    startRow = 7
+    upperValue = sourceSheet.Cells(13, 12).Value + 1
+    
+    targetSheet.Cells(startRow, 1).Value = "NORTH SALES"
+    With targetSheet.Range(targetSheet.Cells(startRow, 1), targetSheet.Cells(startRow, 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, 2).Value = "SALES"
+    targetSheet.Cells(startRow + 1, 3).Value = "NORTH"
+    
+    targetSheet.Cells(startRow + 2, 1).Value = "N11"
+    With targetSheet.Cells(startRow + 2, 2)
+        .Value = sourceSheet.Cells(7, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, 1).Value = "N13"
+    With targetSheet.Cells(startRow + 3, 2)
+        .Value = sourceSheet.Cells(8, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, 1).Value = "N22"
+    With targetSheet.Cells(startRow + 4, 2)
+        .Value = sourceSheet.Cells(10, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, 1).Value = "N24"
+    With targetSheet.Cells(startRow + 5, 2)
+        .Value = sourceSheet.Cells(11, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    '****************************************************************************************************
+    '* SOUTH SALES
+    '****************************************************************************************************
+    startRow = 14
+    upperValue = sourceSheet.Cells(20, 12).Value + 1
+    
+    targetSheet.Cells(startRow, 1).Value = "SOUTH SALES"
+    With targetSheet.Range(targetSheet.Cells(startRow, 1), targetSheet.Cells(startRow, 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, 2).Value = "SALES"
+    targetSheet.Cells(startRow + 1, 3).Value = "SOUTH"
+    
+    targetSheet.Cells(startRow + 2, 1).Value = "S11"
+    With targetSheet.Cells(startRow + 2, 2)
+        .Value = sourceSheet.Cells(14, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, 1).Value = "S13"
+    With targetSheet.Cells(startRow + 3, 2)
+        .Value = sourceSheet.Cells(15, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, 1).Value = "S22"
+    With targetSheet.Cells(startRow + 4, 2)
+        .Value = sourceSheet.Cells(17, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, 1).Value = "S24"
+    With targetSheet.Cells(startRow + 5, 2)
+        .Value = sourceSheet.Cells(18, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+     '****************************************************************************************************
+    '* SOUTHWEST SALES
+    '****************************************************************************************************
+    startRow = 21
+    upperValue = sourceSheet.Cells(25, 12).Value + 1
+    
+    targetSheet.Cells(startRow, 1).Value = "SWC SALES"
+    With targetSheet.Range(targetSheet.Cells(startRow, 1), targetSheet.Cells(startRow, 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, 2).Value = "SALES"
+    targetSheet.Cells(startRow + 1, 3).Value = "SWC"
+    
+    targetSheet.Cells(startRow + 2, 1).Value = "SWC1"
+    With targetSheet.Cells(startRow + 2, 2)
+        .Value = sourceSheet.Cells(21, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, 1).Value = "SWC2"
+    With targetSheet.Cells(startRow + 3, 2)
+        .Value = sourceSheet.Cells(22, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, 1).Value = "SWC3"
+    With targetSheet.Cells(startRow + 4, 2)
+        .Value = sourceSheet.Cells(23, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, 1).Value = "SWC4"
+    With targetSheet.Cells(startRow + 5, 2)
+        .Value = sourceSheet.Cells(24, 12).Value + 1
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, 3)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+End Sub
+
+Sub GrapSPC(ccoSheet As Worksheet, pySheet As Worksheet, targetSheet As Worksheet)
+    Dim startRow As Integer, startCol As Integer
+    Dim upperValue
+    
+    '****************************************************************************************************
+    '* REGION SPC
+    '****************************************************************************************************
+    startRow = 1
+    startCol = 5
+    targetSheet.Cells(startRow, startCol).Value = "REGION SPC"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "SPC"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "CCO"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "NORTH"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = ccoSheet.Cells(13, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = ccoSheet.Cells(26, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(13, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "SOUTH"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = ccoSheet.Cells(20, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = ccoSheet.Cells(26, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(20, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "SW/C"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = ccoSheet.Cells(25, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = ccoSheet.Cells(26, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(25, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    '****************************************************************************************************
+    '* NORTH SPC
+    '****************************************************************************************************
+    startRow = 7
+    upperValue = ccoSheet.Cells(13, 62).Value
+    
+    targetSheet.Cells(startRow, startCol).Value = "NORTH SPC"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "SPC"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "NORTH"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "N11"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = ccoSheet.Cells(7, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(7, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "N13"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = ccoSheet.Cells(8, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(8, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "N22"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = ccoSheet.Cells(10, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(10, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, startCol).Value = "N24"
+    With targetSheet.Cells(startRow + 5, startCol + 1)
+        .Value = ccoSheet.Cells(11, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 3)
+        .Value = pySheet.Cells(11, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    '****************************************************************************************************
+    '* SOUTH SPC
+    '****************************************************************************************************
+    startRow = 14
+    upperValue = ccoSheet.Cells(20, 62).Value
+    
+    targetSheet.Cells(startRow, startCol).Value = "SOUTH SPC"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "SPC"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SOUTH"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "S11"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = ccoSheet.Cells(14, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(14, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "S13"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = ccoSheet.Cells(15, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(15, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "S22"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = ccoSheet.Cells(17, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(17, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, startCol).Value = "S24"
+    With targetSheet.Cells(startRow + 5, startCol + 1)
+        .Value = ccoSheet.Cells(18, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 3)
+        .Value = pySheet.Cells(18, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+     '****************************************************************************************************
+    '* SOUTHWEST SPC
+    '****************************************************************************************************
+    startRow = 21
+    upperValue = ccoSheet.Cells(25, 62).Value
+    
+    targetSheet.Cells(startRow, startCol).Value = "SWC SPC"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "SPC"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SWC"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "SWC1"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = ccoSheet.Cells(21, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(21, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "SWC2"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = ccoSheet.Cells(22, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(22, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "SWC3"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = ccoSheet.Cells(23, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(23, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, startCol).Value = "SWC4"
+    With targetSheet.Cells(startRow + 5, startCol + 1)
+        .Value = ccoSheet.Cells(24, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 3)
+        .Value = pySheet.Cells(24, 62).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+End Sub
+
+Sub GrapCog(cogSheet As Worksheet, pySheet As Worksheet, targetSheet As Worksheet)
+    Dim startRow As Integer, startCol As Integer, cogColumn As Integer
+    Dim upperValue
+    
+    '****************************************************************************************************
+    '* REGION COGS
+    '****************************************************************************************************
+    startRow = 1
+    startCol = 10
+    cogColumn = 29
+    
+    targetSheet.Cells(startRow, startCol).Value = "REGION COGS"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "COGS"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "CCO"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "NORTH"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = cogSheet.Cells(13, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = cogSheet.Cells(26, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(13, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "SOUTH"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = cogSheet.Cells(20, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = cogSheet.Cells(26, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(20, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "SW/C"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = cogSheet.Cells(25, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = cogSheet.Cells(26, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(25, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    '****************************************************************************************************
+    '* NORTH COGS
+    '****************************************************************************************************
+    startRow = 7
+    upperValue = cogSheet.Cells(13, cogColumn).Value
+    
+    targetSheet.Cells(startRow, startCol).Value = "NORTH COGS"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "COGS"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "NORTH"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "N11"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = cogSheet.Cells(7, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(7, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "N13"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = cogSheet.Cells(8, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(8, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "N22"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = cogSheet.Cells(10, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(10, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, startCol).Value = "N24"
+    With targetSheet.Cells(startRow + 5, startCol + 1)
+        .Value = cogSheet.Cells(11, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 3)
+        .Value = pySheet.Cells(11, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    '****************************************************************************************************
+    '* SOUTH COGS
+    '****************************************************************************************************
+    startRow = 14
+    upperValue = cogSheet.Cells(20, cogColumn).Value
+    
+    targetSheet.Cells(startRow, startCol).Value = "SOUTH COGS"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "COGS"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SOUTH"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "S11"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = cogSheet.Cells(14, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(14, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "S13"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = cogSheet.Cells(15, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(15, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "S22"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = cogSheet.Cells(17, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(17, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, startCol).Value = "S24"
+    With targetSheet.Cells(startRow + 5, startCol + 1)
+        .Value = cogSheet.Cells(18, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 3)
+        .Value = pySheet.Cells(18, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+     '****************************************************************************************************
+    '* SOUTHWEST COGS
+    '****************************************************************************************************
+    startRow = 21
+    upperValue = cogSheet.Cells(25, cogColumn).Value
+    
+    targetSheet.Cells(startRow, startCol).Value = "SWC COGS"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "COGS"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SWC"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "SWC1"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = cogSheet.Cells(21, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(21, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "SWC2"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = cogSheet.Cells(22, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(22, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "SWC3"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = cogSheet.Cells(23, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(23, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, startCol).Value = "SWC4"
+    With targetSheet.Cells(startRow + 5, startCol + 1)
+        .Value = cogSheet.Cells(24, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 3)
+        .Value = pySheet.Cells(24, cogColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+End Sub
+
+
+Sub GrapLabor(laborSheet As Worksheet, pySheet As Worksheet, targetSheet As Worksheet)
+    Dim startRow As Integer, startCol As Integer, laborColumn As Integer
+    Dim upperValue
+    
+    '****************************************************************************************************
+    '* REGION Labor
+    '****************************************************************************************************
+    startRow = 1
+    startCol = 15
+    laborColumn = 43
+    
+    targetSheet.Cells(startRow, startCol).Value = "REGION LABOR"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "Labor"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "CCO"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "NORTH"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = laborSheet.Cells(13, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = laborSheet.Cells(26, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(13, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "SOUTH"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = laborSheet.Cells(20, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = laborSheet.Cells(26, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(20, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "SW/C"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = laborSheet.Cells(25, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = laborSheet.Cells(26, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(25, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    '****************************************************************************************************
+    '* NORTH Labor
+    '****************************************************************************************************
+    startRow = 7
+    upperValue = laborSheet.Cells(13, laborColumn).Value
+    
+    targetSheet.Cells(startRow, startCol).Value = "NORTH LABOR"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "Labor"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "NORTH"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "N11"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = laborSheet.Cells(7, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(7, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "N13"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = laborSheet.Cells(8, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(8, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "N22"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = laborSheet.Cells(10, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(10, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, startCol).Value = "N24"
+    With targetSheet.Cells(startRow + 5, startCol + 1)
+        .Value = laborSheet.Cells(11, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 3)
+        .Value = pySheet.Cells(11, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    '****************************************************************************************************
+    '* SOUTH Labor
+    '****************************************************************************************************
+    startRow = 14
+    upperValue = laborSheet.Cells(20, laborColumn).Value
+    
+    targetSheet.Cells(startRow, startCol).Value = "SOUTH LABOR"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "Labor"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SOUTH"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "S11"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = laborSheet.Cells(14, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(14, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "S13"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = laborSheet.Cells(15, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(15, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "S22"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = laborSheet.Cells(17, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(17, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, startCol).Value = "S24"
+    With targetSheet.Cells(startRow + 5, startCol + 1)
+        .Value = laborSheet.Cells(18, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 3)
+        .Value = pySheet.Cells(18, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+     '****************************************************************************************************
+    '* SOUTHWEST Labor
+    '****************************************************************************************************
+    startRow = 21
+    upperValue = laborSheet.Cells(25, laborColumn).Value
+    
+    targetSheet.Cells(startRow, startCol).Value = "SWC LABOR"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "Labor"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SWC"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "PY"
+    
+    targetSheet.Cells(startRow + 2, startCol).Value = "SWC1"
+    With targetSheet.Cells(startRow + 2, startCol + 1)
+        .Value = laborSheet.Cells(21, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 2, startCol + 3)
+        .Value = pySheet.Cells(21, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 3, startCol).Value = "SWC2"
+    With targetSheet.Cells(startRow + 3, startCol + 1)
+        .Value = laborSheet.Cells(22, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 3, startCol + 3)
+        .Value = pySheet.Cells(22, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 4, startCol).Value = "SWC3"
+    With targetSheet.Cells(startRow + 4, startCol + 1)
+        .Value = laborSheet.Cells(23, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 4, startCol + 3)
+        .Value = pySheet.Cells(23, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    targetSheet.Cells(startRow + 5, startCol).Value = "SWC4"
+    With targetSheet.Cells(startRow + 5, startCol + 1)
+        .Value = laborSheet.Cells(24, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 2)
+        .Value = upperValue
+        .NumberFormatLocal = "0%"
+    End With
+    
+    With targetSheet.Cells(startRow + 5, startCol + 3)
+        .Value = pySheet.Cells(24, laborColumn).Value
+        .NumberFormatLocal = "0%"
+    End With
+    
+End Sub
+
+'****************************************************************************************************
+'* [NAME]      GrapRank
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-07
+'* [DESC]      抓取数据更新rank，按照N、S、SWC以及district、city两个维度抓取sales achievement、SPC
+'* base、SPC FY13、SPC FY14的数据
+'****************************************************************************************************
+Sub GrapRank(sourceBook As Workbook, targetSheet As Worksheet)
+    Dim sourceSheet As Worksheet
+    Dim salesRow As Range, workRange As Range, workRow As Range
+    Dim workSales As JdSales
+    
+    Dim i As Integer
+    
+    Dim citySRow As Integer, cityERow As Integer
+    Dim districtSRow As Integer, districtERow As Integer
+    Dim storeSRow As Integer, storeERow As Integer
+    
+    Set sourceSheet = sourceBook.Sheets("CCO_Current")
+    
+    ' 判断基础数据中city、district、store分区的开始结束行
+    Set workRange = sourceSheet.UsedRange
+    citySRow = nextDataRow(workRange, 3, 6, 3)
+    cityERow = nextEmptyRow(workRange, 3, citySRow) - 1
+    districtSRow = nextDataRow(workRange, 3, cityERow)
+    districtERow = nextEmptyRow(workRange, 3, districtSRow) - 1
+    storeSRow = nextDataRow(workRange, 3, districtERow)
+    storeERow = nextEmptyRow(workRange, 3, storeSRow) - 1
+
+    ' 加载city数据
+    Dim citys As Collection
+    Set citys = loadCity(sourceSheet, citySRow, cityERow)
+
+    ' 加载district数据
+    Dim districts As Collection
+    Set districts = loadDistrict(sourceSheet, districtSRow, districtERow)
+    
+    ' 加载store数据
+    Dim stores As Collection
+    Set stores = loadStore(sourceSheet, storeSRow, storeERow)
+    
+    ' 加载去年同期store数据
+    Dim pySheet As Worksheet
+    Dim pyStoreSRow As Integer, pyStoreERow As Integer
+    
+    Set pySheet = sourceBook.Sheets("CCO_PY")
+    Set workRange = pySheet.UsedRange
+    
+    pyStoreSRow = nextDataRow(workRange, 3, 6, 5)
+    pyStoreERow = nextEmptyRow(workRange, 3, pyStoreSRow) - 1
+    
+    Dim pyStores As Collection
+    Set pyStores = loadStore(pySheet, pyStoreSRow, pyStoreERow)
+
+    '****************************************************************************************************
+    '* NORTH REGION
+    '****************************************************************************************************
+    ' SALES ACHIEVEMENT - DISTRICT
+    Call rankSaleByDistrict(targetSheet, districts, "N")
+    
+    ' SALES ACHIEVEMENT - CITY
+    Call rankSaleByCity(targetSheet, citys, "N")
+     
+    ' SPC vs PRIOR YEAR - DISTRICT(Existing)
+    Call rankBaseByDistrict(targetSheet, stores, districts, pyStores, "N")
+    
+    ' SPC vs PRIOR YEAR - CITY(Existing)
+    Call rankBaseByCity(targetSheet, stores, pyStores, "N")
+    
+    ' SPC - DISTRICT(FY13 NEW)
+    Call rankFy13ByDistrict(targetSheet, stores, districts, "N")
+    
+    ' SPC - CITY(FY13 NEW)
+    Call rankFy13ByCity(targetSheet, stores, "N")
+    
+    ' SPC - DISTRICT(FY14 NEW)
+    Call rankFy14ByDistrict(targetSheet, stores, districts, "N")
+    
+    ' SPC - CITY(FY14 NEW)
+    Call rankFy14ByCity(targetSheet, stores, "N")
+    
+    '****************************************************************************************************
+    '* SOUTH REGION
+    '****************************************************************************************************
+    Call rankSaleByDistrict(targetSheet, districts, "S")
+    Call rankSaleByCity(targetSheet, citys, "S")
+    Call rankBaseByDistrict(targetSheet, stores, districts, pyStores, "S")
+    Call rankBaseByCity(targetSheet, stores, pyStores, "S")
+    Call rankFy13ByDistrict(targetSheet, stores, districts, "S")
+    Call rankFy13ByCity(targetSheet, stores, "S")
+    Call rankFy14ByDistrict(targetSheet, stores, districts, "S")
+    Call rankFy14ByCity(targetSheet, stores, "S")
+    
+    '****************************************************************************************************
+    '* SWC REGION
+    '****************************************************************************************************
+    Call rankSaleByDistrict(targetSheet, districts, "SWC")
+    Call rankSaleByCity(targetSheet, citys, "SWC")
+    Call rankBaseByDistrict(targetSheet, stores, districts, pyStores, "SWC")
+    Call rankBaseByCity(targetSheet, stores, pyStores, "SWC")
+    Call rankFy13ByDistrict(targetSheet, stores, districts, "SWC")
+    Call rankFy13ByCity(targetSheet, stores, "SWC")
+    Call rankFy14ByDistrict(targetSheet, stores, districts, "SWC")
+    Call rankFy14ByCity(targetSheet, stores, "SWC")
+    
+End Sub
+
+'****************************************************************************************************
+'* 加载city数据
+'****************************************************************************************************
+Function loadCity(sourceSheet As Worksheet, citySRow As Integer, cityERow As Integer) As Collection
+    Dim workRow As Range
+    Dim workSales As JdSales
+    
+    Dim i As Integer
+    
+    Set loadCity = New Collection
+    
+    For i = citySRow To cityERow
+        Set workRow = sourceSheet.Rows(i)
+        
+        Set workSales = New JdSales
+        
+        workSales.rowSeq = i
+        workSales.city = workRow.Columns(5).Value
+        workSales.area = workRow.Columns(4).Value
+        workSales.salesP = convertSales(workRow.Columns(12).Value)
+        
+        loadCity.Add Item:=workSales, Key:=workSales.city
+        Set workSales = Nothing
+    Next i
+End Function
+    
+'****************************************************************************************************
+'* 加载district数据
+'****************************************************************************************************
+Function loadDistrict(sourceSheet As Worksheet, districtSRow As Integer, districtERow As Integer) As Collection
+    Dim workRow As Range
+    Dim workSales As JdSales
+    
+    Dim i As Integer
+    
+    Set loadDistrict = New Collection
+    
+    For i = districtSRow To districtERow
+        Set workRow = sourceSheet.Rows(i)
+        Set workSales = New JdSales
+        
+        workSales.storeName = workRow.Columns(7).Value
+        workSales.district = workRow.Columns(5).Value
+        workSales.dm = workRow.Columns(6).Value
+        workSales.ageClass = workRow.Columns(8).Value
+        workSales.salesP = convertSales(workRow.Columns(12).Value)
+        workSales.netRevenue = workRow.Columns(67).Value
+        workSales.spcN = workRow.Columns(111).Value
+        workSales.area = workRow.Columns(4).Value
+        workSales.rowSeq = i
+        
+        loadDistrict.Add Item:=workSales, Key:=workSales.district
+        Set workSales = Nothing
+    Next i
+End Function
+    
+'****************************************************************************************************
+'* 加载store数据
+'****************************************************************************************************
+Function loadStore(sourceSheet As Worksheet, storeSRow As Integer, storeERow As Integer) As Collection
+    Dim workRow As Range
+    Dim workSales As JdSales
+    
+    Dim i As Integer
+    
+    Set loadStore = New Collection
+    
+    For i = storeSRow To storeERow
+        Set workRow = sourceSheet.Rows(i)
+        
+        Set workSales = New JdSales
+        
+        workSales.storeName = workRow.Columns(7).Value
+        workSales.district = workRow.Columns(5).Value
+        workSales.city = workRow.Columns(3).Value
+        workSales.dm = workRow.Columns(6).Value
+        workSales.ageClass = workRow.Columns(8).Value
+        workSales.salesP = convertSales(workRow.Columns(12).Value)
+        workSales.netRevenue = workRow.Columns(67).Value
+        workSales.spcN = workRow.Columns(111).Value
+        workSales.area = workRow.Columns(4).Value
+        workSales.rowSeq = i
+        
+        loadStore.Add Item:=workSales, Key:=workSales.storeName
+        Set workSales = Nothing
+    Next i
+End Function
+
+'****************************************************************************************************
+'* [NAME]      convertSales
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-03
+'* [DESC]      读target数据时需要将表中数据加1作为实际值，若单元格为空则将0作为实际值
+'****************************************************************************************************
+Function convertSales(t As Variant)
+    If isEmpty(t) Or Not IsNumeric(t) Then
+        convertSales = 0
+        Exit Function
+    End If
+    
+    convertSales = CDbl(t) + 1
+End Function
+
+'****************************************************************************************************
+'* SPC vs PRIOR YEAR - DISTRICT(Existing)
+'****************************************************************************************************
+Sub rankBaseByDistrict(targetSheet As Worksheet, stores As Collection, districts As Collection, pyStores As Collection, region As String)
+    Dim startRow As Integer, startCol As Integer
+    Dim i As Integer
+    
+    startRow = 1
+    startCol = JdCounter.thisCount
+    JdCounter.move 4
+    
+    ' 表头处理
+    targetSheet.Cells(startRow, startCol + 1).Value = "SPC vs PRIOR YEAR - DISTRICT" & "(" & region & ")"
+    targetSheet.Columns(startCol + 1).ColumnWidth = 18
+    targetSheet.Columns(startCol + 2).ColumnWidth = 12
+    targetSheet.Columns(startCol + 2).NumberFormatLocal = "0%"
+    targetSheet.Columns(startCol + 3).NumberFormatLocal = "0%"
+    
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol + 1), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "DM"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SPC vs PY"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "%"
+        
+    ' 当月数据处理
+    Dim workbox As Object
+    Dim workSales As JdSales
+        
+    Set workbox = CreateObject("Scripting.Dictionary")
+    
+    For i = 1 To stores.Count
+        If stores(i).region = region And stores(i).ageClass = "Base" Then
+            'Debug.Print "seq:" & i & ", store:" & stores(i).district & ", status:" & workbox.exists(stores(i).district)
+            
+            If workbox.exists(stores(i).district) Then
+                Set workSales = workbox.Item(stores(i).district)
+                workSales.spcN = workSales.spcN + stores(i).spcN
+                workSales.netRevenue = workSales.netRevenue + stores(i).netRevenue
+                'Debug.Print "spc:" & workSales.spcN
+            Else
+                Set workSales = New JdSales
+                workSales.spcN = stores(i).spcN
+                workSales.netRevenue = stores(i).netRevenue
+                workSales.district = stores(i).district
+                workbox.Add stores(i).district, workSales
+            End If
+            
+            Set workSales = Nothing
+        End If
+    Next i
+    
+    ' 去年同期数据处理
+    Dim pyWorkbox As Object
+        
+    Set pyWorkbox = CreateObject("Scripting.Dictionary")
+    
+    For i = 1 To pyStores.Count
+        If pyStores(i).region = region And pyStores(i).ageClass = "Base" Then
+
+            If pyWorkbox.exists(pyStores(i).district) Then
+                Set workSales = pyWorkbox.Item(pyStores(i).district)
+                workSales.spcN = workSales.spcN + pyStores(i).spcN
+                workSales.netRevenue = workSales.netRevenue + pyStores(i).netRevenue
+            Else
+                Set workSales = New JdSales
+                workSales.spcN = pyStores(i).spcN
+                workSales.netRevenue = pyStores(i).netRevenue
+                workSales.district = pyStores(i).district
+                pyWorkbox.Add pyStores(i).district, workSales
+            End If
+            
+            Set workSales = Nothing
+        End If
+    Next i
+    
+    Dim dk As Variant
+    Dim workDm As String
+    Dim fillRow As Integer
+    
+    fillRow = 1
+    
+    On Error Resume Next
+    For Each dk In workbox
+        If UCase(dk) <> "DUMMY" Then
+            workDm = ""
+            workDm = districts.Item(workbox.Item(dk).district).dm
+            
+            If isEmpty(workDm) Then
+                workDm = workbox.Item(dk).district
+            End If
+            
+            targetSheet.Cells(startRow + fillRow + 1, startCol + 1).Value = workDm
+            With targetSheet.Cells(startRow + fillRow + 1, startCol + 3)
+                .Value = workbox.Item(dk).spcN / workbox.Item(dk).netRevenue
+            End With
+            
+            With targetSheet.Cells(startRow + fillRow + 1, startCol + 2)
+                .Value = workbox.Item(dk).spcN / workbox.Item(dk).netRevenue - pyWorkbox.Item(dk).spcN / pyWorkbox.Item(dk).netRevenue
+            End With
+            
+            fillRow = fillRow + 1
+        End If
+    Next
+    
+    targetSheet.Range(targetSheet.Cells(startRow + 2, startCol + 1), targetSheet.Cells(startRow + fillRow, startCol + 3)).Sort key1:=targetSheet.Columns(startCol + 2), Order1:=xlAscending, Header:=xlNo
+End Sub
+
+
+'****************************************************************************************************
+'* SPC vs PRIOR YEAR - CITY(Existing)
+'****************************************************************************************************
+Sub rankBaseByCity(targetSheet As Worksheet, stores As Collection, pyStores As Collection, region As String)
+    Dim startRow As Integer, startCol As Integer
+    
+    startRow = 1
+    startCol = JdCounter.thisCount
+    JdCounter.move 4
+
+    targetSheet.Cells(startRow, startCol + 1).Value = "SPC vs PRIOR YEAR - CITY" & "(" & region & ")"
+    targetSheet.Columns(startCol + 1).ColumnWidth = "18"
+    targetSheet.Columns(startCol + 2).NumberFormatLocal = "0%"
+    targetSheet.Columns(startCol + 2).ColumnWidth = "12"
+    targetSheet.Columns(startCol + 3).NumberFormatLocal = "0%"
+    
+     With targetSheet.Range(targetSheet.Cells(startRow, startCol + 1), targetSheet.Cells(startRow, startCol + 3))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "CITY"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SPC vs PY"
+    targetSheet.Cells(startRow + 1, startCol + 3).Value = "%"
+    
+    Dim workbox As Object
+    Dim workSales As JdSales
+    
+    Set workbox = CreateObject("Scripting.Dictionary")
+    
+    Dim s As JdSales
+    
+    For Each s In stores
+        If s.region = region And s.ageClass = "Base" Then
+            If workbox.exists(UCase(s.city)) Then
+                Set workSales = workbox.Item(UCase(s.city))
+                workSales.spcN = workSales.spcN + s.spcN
+                workSales.netRevenue = workSales.netRevenue + s.netRevenue
+            Else
+                Set workSales = New JdSales
+                workSales.spcN = s.spcN
+                workSales.netRevenue = s.netRevenue
+                workSales.city = s.city
+                workbox.Add UCase(s.city), workSales
+            End If
+        End If
+    Next s
+    
+    Dim pyWorkbox As Object
+    
+    Set pyWorkbox = CreateObject("Scripting.Dictionary")
+    
+    For Each s In pyStores
+        If s.region = region And s.ageClass = "Base" Then
+            If pyWorkbox.exists(UCase(s.city)) Then
+                Set workSales = pyWorkbox.Item(UCase(s.city))
+                workSales.spcN = workSales.spcN + s.spcN
+                workSales.netRevenue = workSales.netRevenue + s.netRevenue
+            Else
+                Set workSales = New JdSales
+                workSales.spcN = s.spcN
+                workSales.netRevenue = s.netRevenue
+                workSales.city = s.city
+                pyWorkbox.Add UCase(s.city), workSales
+            End If
+        End If
+    Next s
+    
+    Dim dk As Variant
+    Dim fillRow As Integer
+    
+    fillRow = 1
+    
+    For Each dk In workbox
+        targetSheet.Cells(startRow + fillRow + 1, startCol + 1).Value = workbox.Item(dk).city
+        With targetSheet.Cells(startRow + fillRow + 1, startCol + 3)
+            .Value = workbox.Item(dk).spcN / workbox.Item(dk).netRevenue
+        End With
+        
+        With targetSheet.Cells(startRow + fillRow + 1, startCol + 2)
+            .Value = workbox.Item(dk).spcN / workbox.Item(dk).netRevenue - pyWorkbox.Item(dk).spcN / pyWorkbox.Item(dk).netRevenue
+        End With
+        
+        fillRow = fillRow + 1
+    Next
+    
+    targetSheet.Range(targetSheet.Cells(startRow + 2, startCol + 1), targetSheet.Cells(startRow + fillRow, startCol + 3)).Sort key1:=targetSheet.Columns(startCol + 2), Order1:=xlAscending, Header:=xlNo
+End Sub
+
+'****************************************************************************************************
+'* SPC - DISTRICT(FY13 NEW)
+'****************************************************************************************************
+Sub rankFy13ByDistrict(targetSheet As Worksheet, stores As Collection, districts As Collection, region As String)
+    Dim startRow As Integer, startCol As Integer
+    Dim i As Integer
+    
+    startRow = 1
+    startCol = JdCounter.thisCount
+    JdCounter.move 3
+
+    targetSheet.Cells(startRow, startCol + 1).Value = "SPC - DISTRICT(FY13 NEW)" & "(" & region & ")"
+    targetSheet.Columns(startCol + 1).ColumnWidth = 18
+    targetSheet.Columns(startCol + 2).NumberFormatLocal = "0%"
+
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol + 1), targetSheet.Cells(startRow, startCol + 2))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "DM"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SPC"
+
+    Dim workbox As Object
+    Dim workSales As JdSales
+        
+    Set workbox = CreateObject("Scripting.Dictionary")
+    
+    Dim s As JdSales
+    
+    For Each s In stores
+        If s.region = region And s.ageClass = "FY13" Then
+            If workbox.exists(s.district) Then
+                Set workSales = workbox.Item(s.district)
+                workSales.spcN = workSales.spcN + s.spcN
+                workSales.netRevenue = workSales.netRevenue + s.netRevenue
+            Else
+                Set workSales = New JdSales
+                workSales.spcN = s.spcN
+                workSales.netRevenue = s.netRevenue
+                workSales.district = s.district
+                workbox.Add s.district, workSales
+            End If
+        End If
+    Next s
+    
+    Dim dk As Variant
+    Dim workDm As String
+    Dim fillRow As Integer
+    
+    fillRow = 1
+    
+    On Error Resume Next
+    For Each dk In workbox
+        If UCase(dk) <> "DUMMY" Then
+            workDm = ""
+            workDm = districts.Item(workbox.Item(dk).district).dm
+            
+            If isEmpty(workDm) Then
+                workDm = workbox.Item(dk).district
+            End If
+            
+            targetSheet.Cells(startRow + fillRow + 1, startCol + 1).Value = workDm
+            With targetSheet.Cells(startRow + fillRow + 1, startCol + 2)
+                .Value = workbox.Item(dk).spcN / workbox.Item(dk).netRevenue
+            End With
+            
+            fillRow = fillRow + 1
+        End If
+    Next
+    
+    targetSheet.Range(targetSheet.Cells(startRow + 2, startCol + 1), targetSheet.Cells(startRow + fillRow, startCol + 2)).Sort key1:=targetSheet.Columns(startCol + 2), Order1:=xlAscending, Header:=xlNo
+End Sub
+
+'****************************************************************************************************
+'* SPC - CITY(FY13 NEW)
+'****************************************************************************************************
+Sub rankFy13ByCity(targetSheet As Worksheet, stores As Collection, region As String)
+    Dim startRow As Integer, startCol As Integer
+    
+    startRow = 1
+    startCol = JdCounter.thisCount
+    JdCounter.move 3
+    
+    targetSheet.Cells(startRow, startCol + 1).Value = "SPC - CITY(FY13 NEW)" & "(" & region & ")"
+    targetSheet.Columns(startCol + 1).ColumnWidth = "18"
+    targetSheet.Columns(startCol + 2).NumberFormatLocal = "0%"
+    
+     With targetSheet.Range(targetSheet.Cells(startRow, startCol + 1), targetSheet.Cells(startRow, startCol + 2))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "CITY"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SPC"
+    
+    Dim workbox As Object
+    Dim workSales As JdSales
+    
+    Set workbox = CreateObject("Scripting.Dictionary")
+    
+    Dim s As JdSales
+    
+    For Each s In stores
+        If s.region = region And s.ageClass = "FY13" Then
+            If workbox.exists(UCase(s.city)) Then
+                Set workSales = workbox.Item(UCase(s.city))
+                workSales.spcN = workSales.spcN + s.spcN
+                workSales.netRevenue = workSales.netRevenue + s.netRevenue
+            Else
+                Set workSales = New JdSales
+                workSales.spcN = s.spcN
+                workSales.netRevenue = s.netRevenue
+                workSales.city = s.city
+                workbox.Add UCase(s.city), workSales
+            End If
+        End If
+    Next s
+    
+    Dim dk As Variant
+    Dim fillRow As Integer
+    
+    fillRow = 1
+    
+    For Each dk In workbox
+        targetSheet.Cells(startRow + fillRow + 1, startCol + 1).Value = workbox.Item(dk).city
+        With targetSheet.Cells(startRow + fillRow + 1, startCol + 2)
+            .Value = workbox.Item(dk).spcN / workbox.Item(dk).netRevenue
+        End With
+
+        fillRow = fillRow + 1
+    Next
+    
+    targetSheet.Range(targetSheet.Cells(startRow + 2, startCol + 1), targetSheet.Cells(startRow + fillRow, startCol + 2)).Sort key1:=targetSheet.Columns(startCol + 2), Order1:=xlAscending, Header:=xlNo
+End Sub
+
+'****************************************************************************************************
+'* SPC - DISTRICT(FY14 NEW)
+'****************************************************************************************************
+Sub rankFy14ByDistrict(targetSheet As Worksheet, stores As Collection, districts As Collection, region As String)
+    Dim startRow As Integer, startCol As Integer
+    Dim i As Integer
+    
+    startRow = 1
+    startCol = JdCounter.thisCount
+    JdCounter.move 3
+
+    targetSheet.Cells(startRow, startCol + 1).Value = "SPC - DISTRICT(FY14 NEW)" & "(" & region & ")"
+    targetSheet.Columns(startCol + 1).ColumnWidth = 18
+    targetSheet.Columns(startCol + 2).NumberFormatLocal = "0%"
+
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol + 1), targetSheet.Cells(startRow, startCol + 2))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "DM"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SPC"
+
+    Dim workbox As Object
+    Dim workSales As JdSales
+        
+    Set workbox = CreateObject("Scripting.Dictionary")
+    
+    Dim s As JdSales
+    
+    For Each s In stores
+        If s.region = region And s.ageClass = "FY14" Then
+            If workbox.exists(s.district) Then
+                Set workSales = workbox.Item(s.district)
+                workSales.spcN = workSales.spcN + s.spcN
+                workSales.netRevenue = workSales.netRevenue + s.netRevenue
+            Else
+                Set workSales = New JdSales
+                workSales.spcN = s.spcN
+                workSales.netRevenue = s.netRevenue
+                workSales.district = s.district
+                workbox.Add s.district, workSales
+            End If
+        End If
+    Next s
+    
+    Dim dk As Variant
+    Dim workDm As String
+    Dim fillRow As Integer
+    
+    fillRow = 1
+    
+    On Error Resume Next
+    For Each dk In workbox
+        If UCase(dk) <> "DUMMY" Then
+            workDm = ""
+            workDm = districts.Item(workbox.Item(dk).district).dm
+            
+            If isEmpty(workDm) Then
+                workDm = workbox.Item(dk).district
+            End If
+            
+            If divZero(workbox.Item(dk).spcN, workbox.Item(dk).netRevenue) <> 0 Then
+                targetSheet.Cells(startRow + fillRow + 1, startCol + 1).Value = workDm
+                With targetSheet.Cells(startRow + fillRow + 1, startCol + 2)
+                    .Value = divZero(workbox.Item(dk).spcN, workbox.Item(dk).netRevenue)
+                End With
+                
+                fillRow = fillRow + 1
+            End If
+        End If
+    Next
+    
+    targetSheet.Range(targetSheet.Cells(startRow + 2, startCol + 1), targetSheet.Cells(startRow + fillRow, startCol + 2)).Sort key1:=targetSheet.Columns(startCol + 2), Order1:=xlAscending, Header:=xlNo
+End Sub
+
+'****************************************************************************************************
+'* SPC - CITY(FY14 NEW)
+'****************************************************************************************************
+Sub rankFy14ByCity(targetSheet As Worksheet, stores As Collection, region As String)
+    Dim startRow As Integer, startCol As Integer
+    
+    startRow = 1
+    startCol = JdCounter.thisCount
+    JdCounter.move 3
+    
+    targetSheet.Cells(startRow, startCol + 1).Value = "SPC - CITY(FY14 NEW)" & "(" & region & ")"
+    targetSheet.Columns(startCol + 1).ColumnWidth = "18"
+    targetSheet.Columns(startCol + 2).NumberFormatLocal = "0%"
+    
+     With targetSheet.Range(targetSheet.Cells(startRow, startCol + 1), targetSheet.Cells(startRow, startCol + 2))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "CITY"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SPC"
+    
+    Dim workbox As Object
+    Dim workSales As JdSales
+    
+    Set workbox = CreateObject("Scripting.Dictionary")
+    
+    Dim s As JdSales
+    
+    For Each s In stores
+        If s.region = region And s.ageClass = "FY14" Then
+            If workbox.exists(UCase(s.city)) Then
+                Set workSales = workbox.Item(UCase(s.city))
+                workSales.spcN = workSales.spcN + s.spcN
+                workSales.netRevenue = workSales.netRevenue + s.netRevenue
+            Else
+                Set workSales = New JdSales
+                workSales.spcN = s.spcN
+                workSales.netRevenue = s.netRevenue
+                workSales.city = s.city
+                workbox.Add UCase(s.city), workSales
+            End If
+        End If
+    Next s
+    
+    Dim dk As Variant
+    Dim fillRow As Integer
+    
+    fillRow = 1
+    
+    For Each dk In workbox
+        If divZero(workbox.Item(dk).spcN, workbox.Item(dk).netRevenue) <> 0 Then
+            targetSheet.Cells(startRow + fillRow + 1, startCol + 1).Value = workbox.Item(dk).city
+            
+            With targetSheet.Cells(startRow + fillRow + 1, startCol + 2)
+                .Value = divZero(workbox.Item(dk).spcN, workbox.Item(dk).netRevenue)
+            End With
+
+            fillRow = fillRow + 1
+        End If
+    Next
+    
+    targetSheet.Range(targetSheet.Cells(startRow + 2, startCol + 1), targetSheet.Cells(startRow + fillRow, startCol + 2)).Sort key1:=targetSheet.Columns(startCol + 2), Order1:=xlAscending, Header:=xlNo
+End Sub
+
+'****************************************************************************************************
+'* SALES ACHIEVEMENT - DISTRICT
+'****************************************************************************************************
+Sub rankSaleByDistrict(targetSheet As Worksheet, districts As Collection, region As String)
+    Dim startRow As Integer, startCol As Integer
+    
+    startRow = 1
+    If region = "N" Then
+        JdCounter.thisCount = 19
+    End If
+    startCol = JdCounter.thisCount
+    JdCounter.move 3
+    
+    targetSheet.Cells(startRow, startCol + 1).Value = "SALES ACHIEVEMENT - DISTRICT" & "(" & region & ")"
+    targetSheet.Columns(startCol + 1).ColumnWidth = 18
+    targetSheet.Columns(startCol + 2).NumberFormatLocal = "0%"
+    
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol + 1), targetSheet.Cells(startRow, startCol + 2))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "DM"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SALES"
+    
+    Dim fillRow As Integer
+    Dim d As JdSales
+    
+    fillRow = 1
+    
+    For Each d In districts
+        If d.region = region And UCase(d.district) <> "DUMMY" Then
+            targetSheet.Cells(startRow + fillRow + 1, startCol + 1).Value = d.dm
+            With targetSheet.Cells(startRow + fillRow + 1, startCol + 2)
+                .Value = d.salesP
+            End With
+            fillRow = fillRow + 1
+        End If
+    Next d
+    
+    targetSheet.Range(targetSheet.Cells(startRow + 2, startCol + 1), targetSheet.Cells(startRow + fillRow, startCol + 2)).Sort key1:=targetSheet.Columns(startCol + 2), Order1:=xlAscending, Header:=xlNo
+    
+End Sub
+
+'****************************************************************************************************
+'* SALES ACHIEVEMENT - CITY
+'****************************************************************************************************
+Sub rankSaleByCity(targetSheet As Worksheet, citys As Collection, region As String)
+    Dim startRow As Integer, startCol As Integer
+    
+    startRow = 1
+    startCol = JdCounter.thisCount
+    JdCounter.move 3
+    
+    targetSheet.Cells(startRow, startCol + 1).Value = "SALES ACHIEVEMENT - CITY" & "(" & region & ")"
+    targetSheet.Columns(startCol + 1).ColumnWidth = 18
+    targetSheet.Columns(startCol + 2).NumberFormatLocal = "0%"
+    With targetSheet.Range(targetSheet.Cells(startRow, startCol + 1), targetSheet.Cells(startRow, startCol + 2))
+        .HorizontalAlignment = xlCenter
+        .Merge
+    End With
+    
+    targetSheet.Cells(startRow + 1, startCol + 1).Value = "CITY"
+    targetSheet.Cells(startRow + 1, startCol + 2).Value = "SALES"
+    
+    Dim fillRow As Integer
+    Dim c As JdSales
+    
+    fillRow = 1
+    
+    For Each c In citys
+        If c.region = region And c.salesP <> 0 Then
+            targetSheet.Cells(startRow + fillRow + 1, startCol + 1).Value = c.city
+            targetSheet.Cells(startRow + fillRow + 1, startCol + 2).Value = c.salesP
+            fillRow = fillRow + 1
+        End If
+    Next c
+    
+    targetSheet.Range(targetSheet.Cells(startRow + 2, startCol + 1), targetSheet.Cells(startRow + fillRow, startCol + 2)).Sort key1:=targetSheet.Columns(startCol + 2), Order1:=xlAscending, Header:=xlNo
+End Sub

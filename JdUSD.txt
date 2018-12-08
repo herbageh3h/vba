@@ -1,0 +1,83 @@
+Attribute VB_Name = "JdUSD"
+Option Explicit
+
+Sub doFormatUSD(mySheet As Worksheet)
+    Dim myTable As PivotTable
+
+    Set myTable = mySheet.PivotTables(1)
+    
+    Call colorStore(myTable)
+    Call colorUSD(mySheet)
+End Sub
+
+Sub colorStore(myTable As PivotTable)
+    Dim i As Integer
+    Dim myRow As Range
+    
+    On Error Resume Next
+    With myTable.PivotFields("Region")
+        For i = 1 To .PivotItems.Count
+            Set myRow = .PivotItems(i).LabelRange.EntireRow
+            myRow.Interior.ThemeColor = xlThemeColorAccent1
+            myRow.Interior.TintAndShade = 0.6
+            myRow.ThemeColor = xlThemeColorDark1
+        Next i
+    End With
+
+    With myTable.PivotFields("Area")
+        For i = 1 To .PivotItems.Count
+            Set myRow = .PivotItems(i).LabelRange.EntireRow
+            myRow.Interior.ThemeColor = xlThemeColorAccent1
+            myRow.Interior.TintAndShade = 0.8
+        Next i
+    End With
+    
+     With myTable.PivotFields("Distraict")
+        For i = 1 To .PivotItems.Count
+            Set myRow = .PivotItems(i).LabelRange.EntireRow
+            myRow.Interior.ThemeColor = xlThemeColorDark2
+            myRow.Interior.TintAndShade = 0
+        Next i
+    End With
+End Sub
+
+Sub colorUSD(mySheet As Worksheet)
+    Dim myTable As PivotTable
+    Dim northRow As Integer, southRow As Integer, swRow As Integer, totalRow As Integer, eCol As Integer
+    Dim j As Integer
+    
+    Set myTable = mySheet.PivotTables(1)
+    
+    ' 计算各个区域的位置
+    northRow = myTable.PivotFields("Region").PivotItems(1).LabelRange.row
+    southRow = myTable.PivotFields("Region").PivotItems(2).LabelRange.row
+    swRow = myTable.PivotFields("Region").PivotItems(3).LabelRange.row
+    totalRow = mySheet.UsedRange.Rows.Count
+    eCol = nextEmptyCol(mySheet.Rows(5), 4) - 1
+    
+    ' 给数据单元格套用条件格式
+    Dim myRange As Range
+    With mySheet
+        .Range(.Cells(northRow + 1, 4), .Cells(totalRow, eCol)).FormatConditions.Delete
+        
+        For j = 4 To eCol
+            Set myRange = .Columns(j).Rows(northRow + 1 & ":" & southRow - 1)
+            With myRange
+                .FormatConditions.Add Type:=xlCellValue, Operator:=xlLess, Formula1:="=$" & convertCol(j) & "$" & northRow
+                .FormatConditions(1).Font.Color = -16776961
+            End With
+            
+            Set myRange = .Columns(j).Rows(southRow + 1 & ":" & swRow - 1)
+            With myRange
+                .FormatConditions.Add Type:=xlCellValue, Operator:=xlLess, Formula1:="=$" & convertCol(j) & "$" & southRow
+                .FormatConditions(1).Font.Color = -16776961
+            End With
+            
+            Set myRange = .Columns(j).Rows(swRow + 1 & ":" & totalRow)
+            With myRange
+                .FormatConditions.Add Type:=xlCellValue, Operator:=xlLess, Formula1:="=$" & convertCol(j) & "$" & swRow
+                .FormatConditions(1).Font.Color = -16776961
+            End With
+        Next j
+    End With
+End Sub

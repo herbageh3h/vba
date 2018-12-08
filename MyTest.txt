@@ -1,0 +1,252 @@
+Attribute VB_Name = "MyTest"
+Option Explicit
+
+Sub testConvertCol()
+    Debug.Print convertCol(19)
+End Sub
+
+Sub testRevertCol()
+    Debug.Print revertCol("EL")
+End Sub
+
+Sub testIsEmptyStr()
+    Dim workVar
+    Dim workStr As String
+    Dim workInt As Integer
+    
+    workStr = ""
+    Debug.Print "workVar is " & isEmpty(workVar)
+    Debug.Print "workStr is " & isEmpty(workStr)
+    Debug.Print "workInt is " & isEmpty(workInt)
+End Sub
+
+Sub testUpdateRank()
+    Call updateRank("c:\proj\vba\CCO Monthly District P&L_FY14_P09.xlsm", "c:\proj\vba\FY14 Regional Biz Review_Ranking.xlsx")
+End Sub
+
+Sub testScanData()
+    Dim sourceBook As Workbook, targetBook As Workbook
+    Dim sourceSheet As Worksheet, targetSheet As Worksheet
+    
+    Application.ScreenUpdating = False
+    
+    Set sourceBook = OpenBook("c:\proj\vba\CCO Monthly District P&L_FY14_P09.xlsm")
+    Set sourceSheet = sourceBook.Sheets("CCO_Current")
+    
+    Set targetBook = ThisWorkbook
+    Set targetSheet = targetBook.Sheets("P&L benchmark")
+    
+    Call GrapAchievement(sourceSheet, targetSheet)
+
+    closeBook sourceBook
+    
+    Application.ScreenUpdating = True
+End Sub
+
+Sub testSales()
+    Dim mySales As New JdSales
+    
+    mySales.area = "N"
+    Debug.Print mySales.region 'N
+    
+    mySales.area = ""
+    Debug.Print mySales.region 'EMPTY
+    
+    mySales.area = "SWC11"
+    Debug.Print mySales.region 'SWC
+    
+    mySales.area = "N24"
+    Debug.Print mySales.region 'N
+    
+End Sub
+
+Sub testToDbl()
+    Debug.Print toDbl("") '0
+    Debug.Print toDbl("-") '0
+    Debug.Print toDbl("23.5") '23.5
+End Sub
+
+Sub testObjType()
+    Dim obj As Object
+    Debug.Print TypeName(obj)
+End Sub
+
+Sub testDictionary()
+    Dim d As Object
+    Dim k As Variant
+    Dim c As New Collection
+    
+    Dim s As New JdSales
+    s.district = "a"
+    
+    c.Add s, s.district
+    Set d = CreateObject("Scripting.Dictionary")
+    
+    Debug.Print d.exists(c(1).district)
+
+    
+    d.Add "a", "ant"
+    d.Add "b", "bear"
+    d.Add "c", "cow"
+    
+    Debug.Print d.exists("a")
+    Debug.Print d.Item("a")
+    
+    Debug.Print d.Count
+    For Each k In d
+        Debug.Print d.Item(k)
+    Next
+End Sub
+
+Sub testRankBaseByDistrict()
+    Application.ScreenUpdating = False
+    
+    Dim sourceBook As Workbook
+    Dim sourceSheet As Worksheet
+    Dim stores As Collection
+    
+    Set sourceBook = OpenBook("c:\proj\vba\CCO Monthly District P&L_FY14_P09.xlsx")
+    Set sourceSheet = sourceBook.Sheets("CCO_Current")
+    Set stores = loadStore(sourceSheet, 213, 998)
+    
+    Dim districts As Collection
+    Set districts = loadDistrict(sourceSheet, 101, 184)
+    
+    Dim pyStores As Collection
+    Dim pySheet As Worksheet
+    
+    Set pySheet = sourceBook.Sheets("CCO_PY")
+    Set pyStores = loadStore(pySheet, 213, 998)
+    
+    Dim targetSheet As Worksheet
+    
+    Set targetSheet = createNewSheet(ThisWorkbook)
+    
+    Call rankBaseByDistrict(targetSheet, stores, districts, pyStores)
+    
+    closeBook sourceBook
+    
+    Application.ScreenUpdating = True
+End Sub
+
+Sub testLoadStore()
+    Call preRun
+    
+    Dim sourceBook As Workbook
+    Dim sourceSheet As Worksheet
+    Dim stores As Collection
+    
+    Set sourceBook = OpenBook("c:\proj\vba\CCO Monthly District P&L_FY14_P09.xlsx")
+    Set sourceSheet = sourceBook.Sheets("CCO_Current")
+    
+    Set stores = loadStore(sourceSheet, 213, 998)
+
+    Debug.Print stores(2).storeName 'BJ Kerry Center
+    
+    closeBook sourceBook
+    
+    Call postRun
+End Sub
+
+Sub testLoadDistrict()
+    Application.ScreenUpdating = False
+    
+    Dim sourceBook As Workbook
+    Dim sourceSheet As Worksheet
+    Dim districts As Collection
+    
+    Set sourceBook = OpenBook("c:\proj\vba\CCO Monthly District P&L_FY14_P09.xlsx")
+    Set sourceSheet = sourceBook.Sheets("CCO_Current")
+    
+    Set districts = loadDistrict(sourceSheet, 101, 184)
+
+    Debug.Print districts(10).dm 'Ivan Yang
+    
+    closeBook sourceBook
+    
+    Application.ScreenUpdating = True
+End Sub
+
+Sub testRankBaseByCity()
+    Call preRun
+    
+    Dim sourceBook As Workbook
+    Dim sourceSheet As Worksheet
+    Dim stores As Collection
+    
+    Set sourceBook = OpenBook("c:\proj\vba\CCO Monthly District P&L_FY14_P09.xlsx")
+    Set sourceSheet = sourceBook.Sheets("CCO_Current")
+    Set stores = loadStore(sourceSheet, 213, 998)
+    
+    Dim pySheet As Worksheet
+    Dim pyStores As Collection
+    
+    Set pySheet = sourceBook.Sheets("CCO_PY")
+    Set pyStores = loadStore(pySheet, 213, 998)
+    
+    Dim targetSheet As Worksheet
+    Set targetSheet = createNewSheet(ThisWorkbook)
+    
+    Call rankBaseByCity(targetSheet, stores, pyStores, "N")
+    
+    closeBook sourceBook
+    
+    Call postRun
+End Sub
+
+Sub testRankFy13ByDistrict()
+    Call preRun
+    
+    Dim sourceBook As Workbook
+    Dim sourceSheet As Worksheet
+    Dim stores As Collection
+    
+    Set sourceBook = OpenBook("c:\proj\vba\CCO Monthly District P&L_FY14_P09.xlsx")
+    Set sourceSheet = sourceBook.Sheets("CCO_Current")
+    Set stores = loadStore(sourceSheet, 213, 998)
+    
+    Dim districts As Collection
+    Set districts = loadDistrict(sourceSheet, 101, 184)
+    
+    Dim targetSheet As Worksheet
+    
+    Set targetSheet = createNewSheet(ThisWorkbook)
+    
+    Call rankFy13ByDistrict(targetSheet, stores, districts, "N")
+    
+    closeBook sourceBook
+    
+    Call postRun
+End Sub
+
+Sub workTest()
+    Dim t As JdUtilTester
+    
+    Set t = New JdUtilTester
+    t.Test_RegionCol
+End Sub
+
+Sub trial()
+    Call preRun
+    
+    Dim sourceSheet As Worksheet
+    Set sourceSheet = ThisWorkbook.Sheets("P&L benchmark")
+
+    Dim myRange As Range
+    With sourceSheet
+    Set myRange = .Range(.Cells(2, 20), .Cells(34, 21))
+    End With
+    
+    Dim targetBook As Workbook
+    Dim targetSheet As Worksheet
+    
+    Set targetBook = OpenBook("c:\proj\vba\testZone\sample_blank.xlsx")
+    Set targetSheet = targetBook.Sheets("Sheet1")
+    
+    myRange.Copy targetSheet.Cells(8, 3)
+    
+    targetBook.Save
+    
+    closeBook targetBook
+    Call postRun
+End Sub

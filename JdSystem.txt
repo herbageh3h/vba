@@ -1,0 +1,51 @@
+Attribute VB_Name = "JdSystem"
+Option Explicit
+
+Public cfgScreenUpdateState '屏幕重绘
+Public cfgStatusBarState
+Public cfgCalcState
+Public cfgEventsState
+Public cfgDisplayAlert
+Public herbSTime '运行开始时间
+
+'****************************************************************************************************
+'* [NAME]      preRun
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-03
+'* [DESC]      在代码运行时关闭不需要的Excel功能。
+'*     如果通过VBA更新不同的单元格区域，或者从不同的单元格区域复制/粘贴来创建汇总表，则不希望Excel
+'* 浪费时间和资源来重新计算公式、显示粘贴进度或者重绘网格，尤其在每次单独的操作后（更有甚者，如果代
+'* 码使用了循环，则每次单独操作后Excel都会在后台运行这些功能）。只需要在代码执行结束时进行一次重新
+'* 计算和重绘就足以使工作簿更新。
+'****************************************************************************************************
+Sub preRun()
+    cfgScreenUpdateState = Application.ScreenUpdating
+    cfgStatusBarState = Application.DisplayStatusBar
+    cfgCalcState = Application.Calculation
+    cfgEventsState = Application.EnableEvents
+    cfgDisplayAlert = Application.DisplayAlerts
+
+    Application.ScreenUpdating = False
+    Application.DisplayStatusBar = False
+    Application.Calculation = xlCalculationManual
+    Application.EnableEvents = False
+    Application.DisplayAlerts = False
+    
+    herbSTime = Timer
+End Sub
+
+'****************************************************************************************************
+'* [NAME]      postRun
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-03
+'* [DESC]      在代码运行关闭后恢复相关Excel功能。
+'****************************************************************************************************
+Sub postRun()
+    Debug.Print "total run time:" & Timer - herbSTime
+    
+    Application.ScreenUpdating = cfgScreenUpdateState
+    Application.DisplayStatusBar = cfgStatusBarState
+    Application.Calculation = cfgCalcState
+    Application.EnableEvents = cfgEventsState
+    Application.DisplayAlerts = cfgDisplayAlert
+End Sub

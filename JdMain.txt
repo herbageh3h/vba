@@ -1,0 +1,126 @@
+Attribute VB_Name = "JdMain"
+Option Explicit
+
+Public Const COVER_SHEET_NAME = "COVER"
+
+' CCO抓取的主函数
+Sub GrapCCO()
+    Call preRun
+    
+    Dim sourceBook As Workbook
+    Dim targetBook As Workbook
+
+    Set targetBook = ThisWorkbook
+    
+    On Error GoTo ERROR_HANDLER
+    Set sourceBook = openFile()
+        
+    Dim curSheet As Worksheet, pySheet As Worksheet, targetSheet As Worksheet
+    Dim workingCell As Range
+    
+    Set curSheet = sourceBook.Sheets("CCO_Current")
+    Set targetSheet = createNewSheet(targetBook, "P&L benchmark")
+    With targetSheet.Cells.Font
+        .name = "Calibri"
+        .Size = 11
+    End With
+    
+    Call GrapSales(curSheet, targetSheet)
+    
+    Set pySheet = sourceBook.Sheets("CCO_PY")
+    
+    Call GrapSPC(curSheet, pySheet, targetSheet)
+    Call GrapCog(curSheet, pySheet, targetSheet)
+    Call GrapLabor(curSheet, pySheet, targetSheet)
+    Call GrapRank(sourceBook, targetSheet)
+     
+    sourceBook.Close
+    Set sourceBook = Nothing
+    
+    Call postRun
+    
+    MsgBox "work done"
+    Exit Sub
+ERROR_HANDLER:
+    If sourceBook Is Nothing Then
+        Call postRun
+        Exit Sub
+    End If
+End Sub
+
+' USD格式化的主函数
+Sub FormatUSD()
+    Call preRun
+    
+    Dim myBook As Workbook
+    Dim mySheet As Worksheet
+    
+    On Error GoTo ERROR_HANDLER
+
+    Set myBook = openFile()
+    
+    Set mySheet = myBook.Sheets("USD_S")
+    Call doFormatUSD(mySheet)
+    
+    Set mySheet = myBook.Sheets("UPT_S")
+    Call doFormatUSD(mySheet)
+    
+    myBook.Save
+    closeBook myBook
+    
+    Call postRun
+    
+    MsgBox "work done"
+    Exit Sub
+ERROR_HANDLER:
+    Debug.Print "error number" & Err.Number & ", description:" & Err.Description
+    Select Case Err.Number
+        Case 424: '缺少对象
+            If myBook Is Nothing Then
+                Debug.Print "file not open!"
+                Call postRun
+                Exit Sub
+            End If
+        Case 9: '下标越界
+            If mySheet Is Nothing Then
+                Debug.Print "file not right!"
+                MsgBox "打开的文件不正确，请确认打开的文件是否为《Food  UPT, USD.xlsx》"
+                closeBook myBook
+                Call postRun
+                Exit Sub
+            End If
+    Case Else
+        Debug.Print "error number:" & Err.Number & ", description:" & Err.Description
+        MsgBox "对不起，程序出错了，请联系您的系统管理人员！"
+    End Select
+End Sub
+
+Sub updateRank(sourcePath As String, targetPath As String)
+    Dim sourceBook As Workbook, targetBook As Workbook
+    
+    On Error Resume Next
+    
+    Application.ScreenUpdating = False
+    
+    Set sourceBook = OpenBook(sourcePath)
+    
+    If isEmpty(sourceBook) Then
+        MsgBox "无法读取数据文件！", vbExclamation
+        Application.ScreenUpdating = True
+        Exit Sub
+    End If
+    
+    Set targetBook = OpenBook(targetPath)
+    If isEmpty(targetBook) Then
+        MsgBox "无法读取目标文件！", vbExclamation
+        Application.ScreenUpdating = True
+        closeBook sourceBook
+        Exit Sub
+    End If
+    
+    
+    closeBook targetBook
+    closeBook sourceBook
+    
+    Application.ScreenUpdating = True
+End Sub

@@ -1,0 +1,35 @@
+Attribute VB_Name = "JdCounter"
+Option Explicit
+
+Private mCount As Integer
+
+Public Property Get thisCount() As Integer
+    thisCount = mCount
+End Property
+
+Public Property Let thisCount(c As Integer)
+    mCount = c
+End Property
+
+Public Sub reset()
+    mCount = 0
+End Sub
+
+Public Sub move(step As Integer)
+    mCount = mCount + step
+End Sub
+
+Public Function nextCount() As Integer
+    mCount = mCount + 1
+    nextCount = mCount
+End Function
+
+Public Sub forward()
+    mCount = mCount + 1
+End Sub
+
+Public Sub backward()
+    If mCount > 0 Then
+        mCount = mCount - 1
+    End If
+End Sub

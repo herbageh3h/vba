@@ -1,0 +1,340 @@
+Attribute VB_Name = "JdUtil"
+Option Explicit
+
+'****************************************************************************************************
+'* [NAME]      convertCol
+'* [AUTHOR]    herbage
+'* [DATE]      2014-08-03
+'* [DESC]      根据列序号转换为字母表示，例如1->A
+'****************************************************************************************************
+Function convertCol(colIdx As Integer)
+     convertCol = Split(Cells(1, colIdx).Address, "$")(1)
+End Function
+
+'****************************************************************************************************
+'* [NAME]      revertCol
+'* [AUTHOR]    herbage
+'* [DATE]      2014-02-02
+'* [DESC]      根据列字母转换为列序号表示，例如A->1
+'****************************************************************************************************
+Function revertCol(colLetter As String)
+    revertCol = Range("A1:" & colLetter & "1").Cells.Count
+End Function
+
+'****************************************************************************************************
+'* [NAME]      adrs
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-08
+'* [DESC]      根据行列序号转换单元格地址，例如(6, 4) -> D6
+'****************************************************************************************************
+Function adrs(myRow As Integer, myCol As Integer)
+    adrs = convertCol(myCol) & myRow
+End Function
+
+'****************************************************************************************************
+'* [NAME]      getRowCount
+'* [AUTHOR]    herbage
+'* [DATE]      2006-11-16
+'* [DESC]      获取工作表的总行数
+'****************************************************************************************************
+Function getRowCount(objSheet As Worksheet) As Long
+    getRowCount = objSheet.UsedRange.Rows.Count
+End Function
+
+'****************************************************************************************************
+'* [NAME]      getColCount
+'* [AUTHOR]    herbage
+'* [DATE]      2006-11-16
+'* [DESC]      获取工作表的总列数
+'****************************************************************************************************
+Function getColCount(objSheet As Worksheet) As Integer
+    getColCount = objSheet.UsedRange.Columns.Count
+End Function
+
+'****************************************************************************************************
+'* [NAME]      toDbl
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-03
+'* [DESC]      将字符串转换为数值，默认为0
+'****************************************************************************************************
+Function toDbl(t As String) As Double
+    If isEmpty(t) Or Not IsNumeric(t) Then
+        toDbl = 0
+        Exit Function
+    End If
+    
+    toDbl = CDbl(t)
+End Function
+'****************************************************************************************************
+'* [NAME]      isEmpty
+'* [AUTHOR]    herbage
+'* [DATE]      2014-08-03
+'* [DESC]      判断一个对象是否为空
+'****************************************************************************************************
+Function isEmpty(obj)
+    Dim objType
+    
+    objType = TypeName(obj)
+    
+    If objType = "String" Then
+        If Len(obj) = 0 Then
+            isEmpty = True
+            Exit Function
+        End If
+        
+        isEmpty = False
+        Exit Function
+    End If
+    
+    If objType = "Empty" Or objType = "Nothing" Then
+        isEmpty = True
+        Exit Function
+    End If
+
+    isEmpty = False
+End Function
+
+'****************************************************************************************************
+'* [NAME]      selectFile
+'* [AUTHOR]    herbage
+'* [DATE]      2014-08-10
+'* [DESC]      选择一个文件，返回其绝对路径
+'****************************************************************************************************
+Function selectFile()
+    Dim filePath As String
+    
+    With Application.FileDialog(msoFileDialogOpen)
+        If .Show = -1 Then
+            filePath = .SelectedItems(1)
+        End If
+    End With
+    
+    If isEmpty(filePath) Then
+        Exit Function
+    End If
+    
+    selectFile = filePath
+End Function
+
+'****************************************************************************************************
+'* [NAME]      OpenBook
+'* [AUTHOR]    herbage
+'* [DATE]      2014-08-10
+'* [DESC]      给定一个文件路径，返回其打开后的workbook对象
+'****************************************************************************************************
+Function OpenBook(filePath As String)
+    If isEmpty(filePath) Then
+        Exit Function
+    End If
+    
+    On Error Resume Next
+    
+    Workbooks.Open filePath, 0
+    Set OpenBook = ActiveWorkbook
+End Function
+
+'****************************************************************************************************
+'* [NAME]      closeBook
+'* [AUTHOR]    herbage
+'* [DATE]      2014-08-10
+'* [DESC]      关闭已经打开的workbook对象，并且不显示提示信息
+'****************************************************************************************************
+Sub closeBook(ByRef myBook As Workbook)
+    On Error Resume Next
+    Application.DisplayAlerts = False
+    
+    myBook.Close
+    
+    Application.DisplayAlerts = True
+End Sub
+
+'****************************************************************************************************
+'* [NAME]      divZero
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-04
+'* [DESC]      如果除数为0，则返回0
+'****************************************************************************************************
+Function divZero(d1 As Double, d2 As Double) As Double
+    If d2 = 0 Then
+        divZero = 0
+        Exit Function
+    End If
+    
+    divZero = d1 / d2
+End Function
+
+'****************************************************************************************************
+'* [NAME]      openFile
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-06
+'* [DESC]      弹出文件对话框，由用户选择文件，返回打开后的Workbook
+'****************************************************************************************************
+Function openFile()
+    Dim filePath As String
+    
+    With Application.FileDialog(msoFileDialogOpen)
+        If .Show = -1 Then
+            filePath = .SelectedItems(1)
+        End If
+    End With
+    
+    If isEmpty(filePath) Then
+        Exit Function
+    End If
+    
+    Workbooks.Open filePath, 0
+    Set openFile = ActiveWorkbook
+End Function
+
+'****************************************************************************************************
+'* [NAME]      createNewSheet
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-06
+'* [DESC]      新增workshhet，放在最后页，返回新增sheet的对象
+'****************************************************************************************************
+Function createNewSheet(myBook As Workbook, sheetName As String)
+    Application.DisplayAlerts = False
+    
+    Dim targetSheet As Worksheet
+
+    If isSheetExists(myBook, sheetName) Then
+        myBook.Sheets(sheetName).Delete
+    End If
+    
+    With myBook
+       Set targetSheet = .Sheets.Add(after:=.Sheets(.Sheets.Count))
+    End With
+    
+    targetSheet.name = sheetName
+    
+    Set createNewSheet = targetSheet
+    
+    Application.DisplayAlerts = True
+End Function
+
+'****************************************************************************************************
+'* [NAME]      isSheetExists
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-06
+'* [DESC]      判断excel中是否已经包含某个sheet
+'****************************************************************************************************
+Function isSheetExists(myBook As Workbook, sheetName As String) As Boolean
+    Dim s As Worksheet
+    
+    For Each s In myBook.Sheets
+        If s.name = sheetName Then
+            isSheetExists = True
+            Exit Function
+        End If
+    Next s
+    
+    isSheetExists = False
+End Function
+
+'****************************************************************************************************
+'* [NAME]      nextDataRow
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-06
+'* [DESC]      excel中通常以空行区分数据区域，本函数寻找下一个区域开始的行号
+'* [PARAM]     col -> 以具体某列数据为准
+'*             startRow -> 开始行
+'*             times -> 跨过的区域个数
+'****************************************************************************************************
+Function nextDataRow(myRange As Range, col As Integer, startRow As Integer, Optional times As Integer) As Integer
+    Dim workColumn As Range
+    Dim i As Integer, c As Integer
+    
+    Dim lTimes As Integer
+    If times <= 1 Then
+        lTimes = 1
+    Else
+        lTimes = times
+    End If
+    
+    Set workColumn = myRange.Columns(col)
+    
+    c = 0
+    For i = startRow To workColumn.Cells.Count
+        If isEmpty(workColumn.Cells(i).Value) And Not isEmpty(workColumn.Cells(i + 1).Value) Then
+            nextDataRow = i + 1
+            c = c + 1
+            
+            If c = lTimes Then
+                Exit Function
+            End If
+        End If
+    Next i
+    
+    nextDataRow = -1
+End Function
+
+'****************************************************************************************************
+'* [NAME]      nextEmptyRow
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-06
+'* [DESC]      寻找下一个空白区域开始的行号
+'* [PARAM]     col -> 以具体某列数据为准
+'*             startRow -> 开始行
+'*             times -> 跨过的区域个数
+'****************************************************************************************************
+Function nextEmptyRow(myRange As Range, col As Integer, startRow As Integer, Optional times As Integer) As Integer
+    Dim workColumn As Range
+    Dim i As Integer, c As Integer
+    
+    Dim lTimes As Integer
+    If times <= 1 Then
+        lTimes = 1
+    Else
+        lTimes = times
+    End If
+    
+    Set workColumn = myRange.Columns(col)
+    
+    c = 0
+    For i = startRow To workColumn.Cells.Count
+        If Not isEmpty(workColumn.Cells(i).Value) And isEmpty(workColumn.Cells(i + 1).Value) Then
+            nextEmptyRow = i + 1
+            c = c + 1
+            
+            If c = lTimes Then
+                Exit Function
+            End If
+        End If
+    Next i
+    
+    nextEmptyRow = -1
+End Function
+
+'****************************************************************************************************
+'* [NAME]      nextEmptyCol
+'* [AUTHOR]    herbage
+'* [DATE]      2014-09-08
+'* [DESC]      寻找下一个空白区域开始的列号
+'* [PARAM]     myRow -> 以具体某行数据为准
+'*             startCol -> 开始列
+'*             times -> 跨过的区域个数
+'****************************************************************************************************
+Function nextEmptyCol(myRow As Range, startCol As Integer, Optional times As Integer) As Integer
+    Dim i As Integer, c As Integer
+    
+    Dim lTimes As Integer
+    If times <= 1 Then
+        lTimes = 1
+    Else
+        lTimes = times
+    End If
+    
+    c = 0
+    For i = startCol To myRow.Cells.Count
+        If Not isEmpty(myRow.Cells(i).Value) And isEmpty(myRow.Cells(i + 1).Value) Then
+            nextEmptyCol = i + 1
+            c = c + 1
+            
+            If c = lTimes Then
+                Exit Function
+            End If
+        End If
+    Next i
+    
+    nextEmptyCol = -1
+End Function
